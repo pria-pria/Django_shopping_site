@@ -1,0 +1,1 @@
+from .authmiddle import auth_middleware

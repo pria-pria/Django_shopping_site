@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+ <div class="p-4 m-4">
+  <div class="col-lg-5 mx-auto border-rounded pt-4">
+    <h3 class="alert alert-secondary border rounded mx-auto" style="background-color: #e3f2fd;"> Signup </h3>
+   <form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mx-auto">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+    <div class="form-group mx-auto">
+      <label for="">Username</label>
+       <input type="username"  name="username" id="" class="form-control form-control-sm"  value="{{values.username}}">
+
+       <label for="">Phone</label>
+       <input type="text"  name="phone" id="" class="form-control form-control-sm" value="{{values.phone}}">
+      
+       <label for="">Email</label>
+       <input type="email"  name="email" id="" class="form-control form-control-sm" placeholder="example@gmail.com" value="{{values.email}}">
+      
+       <label for="">Password</label>
+       <input type="password" name="password" id="" class="form-control form-control-sm" placeholder="**********"><br>
+
+      <div class="form-group mx-auto" >
+       <input type="submit" class="btn btn-light border rounded mx-auto" style="background-color: #e3f2fd;" value="Signup">
+       <a href="/login">Already a User?!</a>
+      </div>
+    </div>
+  </form>
+ </div>
+</div>
+{% endblock %}
